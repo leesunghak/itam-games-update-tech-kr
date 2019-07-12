@@ -282,7 +282,7 @@ export default new Vuex.Store({
 
 <br />
 
-아래의 코드는 페이지 데이터를 초기화하고 route 값을 watcher를 통해 관찰하며 전의 route가 다음 route와 같은 컴포넌트를 사용하는지 확인하기 위해
+아래의 코드는 페이지 데이터를 초기 데이터를 부여하고 route 값을 watcher를 통해 관찰하며 resetData를 통해 리셋해줍니다.
 
 
 ```
@@ -310,6 +310,33 @@ methods: {
         //........
     }
 }
+```
+
+위의 예시와 같이 굳이 초기 데이터를 리셋 시켜주는 이유는 만약 다음 $route가 같은 컴포넌트를 사용하는 경우, Vue는 최소한의 렌더링을 위해 부분적으로 데이터 초기화를 하기 때문에 엣지 케이스 수정을 위해 데이터 리셋을 시켜주는 것 입니다.
+(ex. /post/1 ===> /post/2 와 같이 컴포넌트를 공유하는 라우트)
+
+
+하지만 초기화 한번을 통해 Vue의 엣지 케이스를 커버할 수 있다면 좀 더 이상적일 것입니다. 아래의 예시는 router-view의 :key 값을 통해 이 문제에 솔루션을 제공합니다.
+
+```
+data() {
+    return {
+        loading: false,
+        error, null,
+        post: null
+    }
+},
+created () {
+    this.getPost(this.$route.params.id)
+},
+methods: {
+    getPost(postId) {
+        //........
+    }
+}
+
+
+<router-view :key="$route.fullPath"></router-view>
 ```
 
 
