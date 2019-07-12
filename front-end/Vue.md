@@ -515,6 +515,36 @@ Vue에서 렌더할 떄 단 하나의 root component만 허용된다는 것을 �
 
 ```
 
+위와 같이 li의 배열을 출력하려고 할 경우 에러가 발생하게 됩니다.
+이는 아래와 같은 함수형 렌더방식을 채택하면서 고칠 수 있습니다. 
+
+
+```
+functional: true,
+render(h, { props }) {
+    return props.routes.map(route => 
+        <li key={route.name}>
+            <router-link to={route}>
+                {route.title}
+            </router-link>
+        </li>
+    )
+}
+
+```
+
+
+위의 예시와 같이 함수형 렌더 선언을 한다면 복수의 루트 컴포넌트를 렌더할 수 있습니다. 하지만 만약 다른 팀원들과 협업을 하고 계시다면 팀원 모두 함수형 렌더 선언 방식에 대한 지식이 필요할 것 입니다.
+
+
+
+2.non-HTML element 렌더링
+
+***이 파트는 webGL 같은 non-HTML 렌더링에 관한 내용입니다.***
+
+
+
+
 
 <div align="center">
 <b>LICENSE</b>: Internet
