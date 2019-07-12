@@ -142,7 +142,25 @@ requireComponent.keys().forEach(fileName => {
 
 위의 글로벌 컴포넌트 등록은 index.js 혹은 main.js 와 같은 어플리케이션의 엔트리 포인트에 등록해도 되지만 강의자는 component/_global.js 같이 컴포넌트 다이렉토리에 등록하고 이를 엔트리 파일에서 import 하는 것을 추천합니다.
 
+<br />
 ***맨 마지막 componentConfig.default || componentConfig 신텍스는 웹 팩과 관련된 세팅이며 여기에 해설을 적진 않겟습니다.***
+<br />
+<br />
+이렇게 global registration을 한 컴포넌트는 아래와 같이 import 없이 탬플릿에서 사용할 수 있습니다.
+
+```
+<BaseInput 
+    v-model="searchText"
+    @keydown.enter="search"
+    />
+<BaseButton @click="search">
+    <BaseIcon name="search" />
+</BaseButton>
+```
+
+import 없이 바로 템플렛에서 컴포넌트를 사용할 수 있기 떄문에 모든 컴포넌트를 등록하고 사용하고 싶을 수 있지만 bundle file의 크기가 과도하게 커지는 것을 막기 위해 공용으로 필요한 컴포넌트만 등록해서 쓰는 것을 추천합니다.
+
+
 
 ## 2. Technology
 
