@@ -33,7 +33,7 @@
 
 ## 1. 7 Secret Patterns
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/7lpemgMhi0k" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+[![원본영상 (유튜브))]](https://youtu.be/7lpemgMhi0k)
 
 ## 2. Technology
 
