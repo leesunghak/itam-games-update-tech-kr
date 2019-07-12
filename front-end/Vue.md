@@ -339,6 +339,19 @@ methods: {
 <router-view :key="$route.fullPath"></router-view>
 ```
 
+위의 코드는 만약 fullPath가 바뀐다면 컴포넌트가 같더라도 초기 상태로 렌더하라는 패턴입니다. 이 패턴을 적용할 경우 라우트 간의 로딩 속도가 좀 더 걸리게 되는 것은 사실이지만 디버깅과 좀 더 예측 가능한 라우팅의 측면에서 고려해 볼 만한 사항입니다.
+
+
+<br />
+<br />
+
+2. 투명 wrapper
+
+
+
+
+
+
 
 <div align="center">
 <b>LICENSE</b>: Internet
