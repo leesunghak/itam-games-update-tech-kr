@@ -45,6 +45,54 @@
 
 ### 생산성 향상
 
+1. 똑똑해진 Watchers
+
+Vue 개발자라면 아래와 같은 Watcher 사용 패턴을 경험해보셧을 것 입니다.
+
+```
+created() {
+    this.fetchUserList()
+}
+watch: {
+    searchText() {
+        this.fetchUserList()
+    }
+}
+```
+
+위의 코드는 컴포넌트가 만들어지면 바로 유저 리스트를 불러오며 특정 데이터가 수정될 떄마다 다시 유저 리스트를 불러오는 디자인 패턴입니다. 위의 예시에서 searchText() 같은 경우에는 유저들의 <input> 값에 따라 특정 리스트의 필터를 걸어주다고 볼 수 있습니다. (예) 입력 값에 따라 친구 목록 필터).
+
+위의 예시 코드는 아래와 같이 좀 더 최적화 할 수 있습니다.
+
+```
+created() {
+    this.fetchUserList()
+}
+watch: {
+    searchText: 'fetchUserList'
+}
+```
+
+첫 번쨰는 watcher는 문자열을 입력 값으로 받을 수 있다는 것입니다.
+한단계 더 최적화하여 아래의 코드로 리팩토링 할 수 있습니다.
+
+```
+watch: {
+    searchText: {
+        handler: 'fetchUserList',
+        immediate: true
+    }
+}
+```
+
+위의 예시 코드는 watcher의 immediate 값을 이용한 최적화 입니다.
+immediate의 값을 true로 설정하면 created 훅을 사용할 필요가 없습니다.
+immediate은 컴포넌트가 준비되면 그 즉시 설정된 핸들러를 가동합니다.
+
+
+2.
+
+
 ## 2. Technology
 
 
