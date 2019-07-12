@@ -476,8 +476,44 @@ inheritAttrs: false는 Vue component config에서 지정할 수 잇는 세팅입
 <br />
 <br />
 
+***이 파트는 Vue에서 잘 사용되지 않는 가능성들에 대한 설명입니다***
+
+Vue에서 렌더할 떄 단 하나의 root component만 허용된다는 것을 모두 아실 겁니다. 하지만 너무나 자주 겪는 에러이고 또 때로는 이 기본적인 규칙을 지키기 힘들 떄가 있습니다.
 
 
+```
+<template>
+    <ul>
+        <NavBarRoutes :routes="persistentNavRoutes" />
+        <NavBarRoutes
+            v-if="loggedIn"
+            :routes="loggenInNavRoutes"
+        />
+        <NavBarRoutes 
+            v-else
+            :routes="loggedOutNavRoutes
+        />
+    </ul>
+</template>
+
+```
+
+위의 예시는 로그인 상태에 따라 다른 네비게이션 바를 렌더하는 디자인 패턴입니다. 상용화되어 있는 패턴이고 ul을 root component로 하고 있어 이 자체로는 문제가 되지 않지만 NavBarRoutes로 인해 에러가 발생할 수 있습니다.
+
+
+```
+<template>
+    <li
+        v-for="route in routes"
+        :key="route.name"
+    >
+        <router-link :to="route">
+        {{ route.title }}
+        </router-link>
+    </li>
+</template>
+
+```
 
 
 <div align="center">
