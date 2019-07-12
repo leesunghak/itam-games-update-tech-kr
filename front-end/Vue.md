@@ -349,9 +349,123 @@ methods: {
 
 2. 투명 wrapper
 
+***컴포넌트 사이 attribute의 공유에 대한 기능 수정 사항에 대한 파트입니다***
+
+
+아래는 기본적인 BaseInput 태그의 사용 예시입니다.
+
+
+```
+<template>
+    <input
+        :value="value"
+        @input="$emit('input', $emit.target.value)"
+        >
+</template>
+
+    <BaseInput @focus.native="doSomething">
+```
+
+위의 예시는 focus가 BaseInput 컴포넌트에 있을 때 native를 통해 BaseInput 컴포넌트의 root element의 event를 주시하게 됩니다. 
+
+
+하지만 아래와 같이 label로 둘러싸게 리팩토링 된다면 BaseInput은 원래 의도대로 작동할 수 없게 됩니다.
+
+
+```
+<template>
+    <label>
+    {{ label }}
+        <input
+            :value="value"
+            @input="$emit('input', $emit.target.value)"
+        >    
+    </label>
+</template>
+
+    <BaseInput @focus.native="doSomething">
+```
+
+
+위와 같이 추가적인 리팩토링이나 패턴 수정으로 인해 생길 수 있는 문제는 아래의 솔루션을 통해서 사전에 방지할 수 있습니다. 
+
+```
+<template>
+    <label>
+    {{ label }}
+        <input
+            :value="value"
+            v-on="listeners"
+        >    
+    </label>
+</template>
 
 
 
+computed: {
+    listeners() {
+        return {
+            ...this.$listeners,
+            input: event =>
+                this.$emit('input', event.target.value)
+        }
+    }
+}
+
+<BaseInput @focus="doSomething" />
+```
+
+
+위의 예시와 같이 computed에 listeners() 를 통해 부모 자식 컴포넌트 간의 모든 $listener 값을 관리하고 BaseInput의 root element에 v-on을 객체 신텍스로 설정함으로 $listener의 모든 이벤트를 주시할 수 있습니다. 
+
+이렇게 BaseInput을 구성하면서 미래에 리팩토링 및 구조 수정에도 문제없는 컴포넌트 형성을 할 수 있습니다.
+
+하지만 이 방식도 아래의 코드와 같이 BaseInput에 placeholder가 추가된다면 에러를 피할 수 없습니다.
+
+
+```
+<template>
+    <label>
+    {{ label }}
+        <input
+            :value="value"
+            v-on="listeners"
+        >    
+    </label>
+</template>
+
+
+<BaseInput 
+    placeholder="What's your name?"
+    @focus="doSomething" />
+```
+
+
+위의 예시에서 에러가 발생하는 이유는 Vue는 prop으로 지정되지 않은 attribute을 root element로 넘기기 떄문입니다. 만약 Vue의 디폴트 세팅대로 미지정 attribute을 무조건 root element로 넘겨받지 않고 지정한 attribute만을 선택적으로 관리하고 싶다면 아래와 같은 솔루션을 이용할 수 있습니다.
+
+
+```
+<template>
+    <label>
+    {{ label }}
+        <input
+            v-bind="$attrs"
+            :value="value"
+            v-on="listeners"
+        >    
+    </label>
+</template>
+
+
+<BaseInput 
+    placeholder="What's your name?"
+    @focus="doSomething" />
+
+
+inheritAttrs: false
+```
+
+inheritAttrs: false는 Vue component config에서 지정할 수 잇는 세팅입니다. 이 옵션은 컴포넌트가 자동으로 attribute을 넘겨받지 않고 v-bind를 통해 지정한 것들만을 넘겨받게 합니다. $attrs는 prop으로 지정되지 않은 모든 attribute들이 저장돼어 잇는 객체입니다.
 
 
 
