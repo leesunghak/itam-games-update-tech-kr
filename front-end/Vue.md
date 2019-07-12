@@ -276,9 +276,41 @@ export default new Vuex.Store({
 <br />
 <br />
 
-1
+1.더 꺠끗해진 Views
+
+***이 수정 사항은 Vue router 라이브러리에 관련된 수정사항입니다.***
+
+
+```
+data() {
+    return {
+        loading: false,
+        error, null,
+        post: null
+    }
+},
+watch: {
+    '$route': {
+        handler: 'resetData',
+        immediate: true
+    }
+},
+methods: {
+    resetData() {
+        this.loading = false
+        this.error = null
+        this.post = null
+        this.getPost(this.$route.params.id)
+    },
+    getPost(postId) {
+        //........
+    }
+}
+```
+
+
 <div align="center">
-<b>LICENSE</b>: CC7 TEAM CYAN
+<b>LICENSE</b>: Internet
 </div>
 <br/>
 <div align="center">
