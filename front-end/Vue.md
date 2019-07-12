@@ -140,6 +140,10 @@ requireComponent.keys().forEach(fileName => {
 })
 ```
 
+위의 글로벌 컴포넌트 등록은 index.js 혹은 main.js 와 같은 어플리케이션의 엔트리 포인트에 등록해도 되지만 강의자는 component/_global.js 같이 컴포넌트 다이렉토리에 등록하고 이를 엔트리 파일에서 import 하는 것을 추천합니다.
+
+******
+
 ## 2. Technology
 
 
