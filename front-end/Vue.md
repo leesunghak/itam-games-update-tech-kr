@@ -30,7 +30,7 @@
 
 ## 1. 7 Secret Patterns
 
-[![원본영상 (유튜브))]](https://youtu.be/7lpemgMhi0k)
+![원본영상 (유튜브))]](https://youtu.be/7lpemgMhi0k)
 
 이 파트는 2018년 3월 뉴 올리언스에서 개최된 Vue Conference의 토크를 기반으로 만들어졋으며 시기에 따라 최신 버전이 아닐 수도 있습니다.
 
