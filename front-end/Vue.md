@@ -1,7 +1,8 @@
 <div align="center">
+    <img src="../asset/itam-games.jpg" />
     <img src="../asset/vue-fam.png" align="center" width="100%" alt="vue">
 </div>
-<h1 align="center" >Vue Family Updates</h1>
+<h1 align="center" >Itam Games Frontend Tech Updates</h1>
 
 ## Vue, Vuex, Vue Router 등의 기술 업데이트
 
@@ -16,7 +17,7 @@
         <a href="https://itam.market/ko">Our Our market page</a>
         <br/>
         <br/>
-        <img src="../asset/itam-games.jpg" />
+
         </a>
         <br/>
         ***********************************************************************
@@ -148,6 +149,7 @@ requireComponent.keys().forEach(fileName => {
 <br />
 이렇게 global registration을 한 컴포넌트는 아래와 같이 import 없이 탬플릿에서 사용할 수 있습니다.
 
+
 ```
 <BaseInput 
     v-model="searchText"
@@ -159,6 +161,51 @@ requireComponent.keys().forEach(fileName => {
 ```
 
 import 없이 바로 템플렛에서 컴포넌트를 사용할 수 있기 떄문에 모든 컴포넌트를 등록하고 사용하고 싶을 수 있지만 bundle file의 크기가 과도하게 커지는 것을 막기 위해 공용으로 필요한 컴포넌트만 등록해서 쓰는 것을 추천합니다.
+
+
+<br />
+<br />
+
+3. Module 등록
+
+위의 컴포넌트 등록과 비슷한 맥락으로 module 역시 global 등록을 하여 사용할 수 있습니다. Vuex를 통해 Vue state 관리를 경험 하셧다면 아래의 세팅을 사용해 보셧을 것 입니다.
+
+
+```
+import auth from './modules/auth'
+import posts from './modules/posts'
+import comments from './modules/comments'
+
+export default new Vuex.Store({
+    modules: {
+        auth,
+        posts,
+        comments
+        ...
+    }
+})
+```
+
+위와 같은 셋업은 다양한 컴포넌트가 요구될 수록 스토어가 커지고 바빠진다는 단점이 있습니다. 이런 단점을 극복하기 위한 해결책은 아래와 같습니다.
+
+```
+import camelCase from 'lodash/camelCase'
+import requireModule = require.context('.', false, /\.js$/)
+const modules {}
+
+requireModule.keys().forEach(fileName => {
+    //Don't register this file as a Vuex module
+    if(fileName === './index.js') return
+
+    const moduleName = camelCase(
+        fileName.replace(/(\/\/|\.js)/g, '')
+
+    )
+    modules[moduleName] = requireModule(fileName)
+})
+
+export default modules
+```
 
 
 
