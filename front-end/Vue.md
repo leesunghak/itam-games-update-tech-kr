@@ -89,9 +89,69 @@ watch: {
 immediate의 값을 true로 설정하면 created 훅을 사용할 필요가 없습니다.
 immediate은 컴포넌트가 준비되면 그 즉시 설정된 핸들러를 가동합니다.
 
+<br />
+<br />
 
-2.
+2.글로벌 (공용) 컴포넌트 등록
 
+복수의 페이지에서 사용되는 컴포넌트들을 불러올 떄 아래와 같은 코드를 자주 사용하게 됩니다.
+
+```
+import BaseButton from './base-button'
+import BaseIcon from './base-icon'
+import BaseInput from './base-input'
+
+export default {
+    components: {
+        BaseButton,
+        BaseIcon,
+        BaseInput
+    }
+}
+```
+
+컴포넌트의 공통된 기능 뿐만 아니라 스타일링 등의 이유로 우리는 공용 컴포넌트를 사용합니다.
+
+하지만 때론 아래와 같이 간단한 템플릿을 위해 긴 자바스크립트 import를 하게 됩니다.
+```
+import BaseButton from './base-button'
+import BaseIcon from './base-icon'
+import BaseInput from './base-input'
+
+export default {
+    components: {
+        BaseButton,
+        BaseIcon,
+        BaseInput
+    }
+}
+```
+
+개발자라면 귀찮은 일은 고쳐야하는 일이기 떄문에 아래와 같은 솔루션이 제공됩니다.
+
+```
+import Vue from 'vue'
+import upperFirst from 'lodash/upperFirst'
+import camelCase from 'lodash/camelCase'
+
+// Require in a base component context
+const requireComponent = require.context(
+    '.', false, /base-[\w-]+\.vue$/
+)
+
+requireComponent.keys().forEach(fileName => {
+    //Get component config
+    const componentConfig = requireComponent(fileName)
+
+    //Get PascalCase name of component
+    const componentName = upperFirst(
+        camelCase(fileName.replace(/^\.\//,'').replace(/\.\w+$/, ''))
+
+    //Register component globally
+    Vue.component(componentName, componentConfig.default || componentConfig)
+    )
+})
+```
 
 ## 2. Technology
 
