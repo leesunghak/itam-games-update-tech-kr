@@ -1,5 +1,5 @@
 <div align="center">
-    <img src="./assets/logo.svg" align="center" width="100%" alt="itamgames">
+    <img src="./asset/itam-games.jpg" align="center" width="100%" alt="itamgames">
 </div>
 
 # itam-games-update-tech-kr
