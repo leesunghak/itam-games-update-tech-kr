@@ -465,7 +465,7 @@ computed: {
 inheritAttrs: false
 ```
 
-inheritAttrs: false는 Vue component config에서 지정할 수 잇는 세팅입니다. 이 옵션은 컴포넌트가 자동으로 attribute을 넘겨받지 않고 v-bind를 통해 지정한 것들만을 넘겨받게 합니다. $attrs는 prop으로 지정되지 않은 모든 attribute들이 저장돼어 잇는 객체입니다.
+inheritAttrs: false는 Vue component config에서 지정할 수 잇는 세팅입니다. 이 옵션은 컴포넌트가 자동으로 attribute을 넘겨받지 않고 v-bind를 통해 지정한 것들만을 넘겨받게 합니다. $attrs는 prop으로 지정되지 않은 모든 attribute들이 저장되어 잇는 객체입니다.
 
 
 <br />
