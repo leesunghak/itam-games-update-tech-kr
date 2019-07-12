@@ -16,8 +16,6 @@
         <br/>
         <a href="https://itam.market/ko">Our Our market page</a>
         <br/>
-        <br/>
-        <br/>
         ***********************************************************************
     </div>
 </div>
@@ -42,7 +40,13 @@
 2. 극단적 수정(??!!)
 3. 무한한 가능성
 
+<br />
+<br />
+
 ### 생산성 향상
+
+<br />
+<br />
 
 1. 똑똑해진 Watchers
 
@@ -205,6 +209,8 @@ requireModule.keys().forEach(fileName => {
 export default modules
 ```
 
+위의 코드는 글로벌 컴포넌트 등록과 유사한 형태이며 작동 원리도 비슷합니다.
+보통 index.js의 형식으로 modules 다이렉토리에 위치합니다. 코드의 내용을 보면 modules 다이렉토리에 잇는 모든 js 파일을 읽으며 Vuex module로 등록합니다. 파일의 이름이 index.js일 경우에는 아무런 동작 없이 return 합니다. 
 
 
 ## 2. Technology
