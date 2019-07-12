@@ -13,10 +13,10 @@
         <a href="https://www.itam.games/en">Our official website</a>
         <br/>
         <br/>
-        App available at Google Play
-        <br/>
         <a href="https://itam.market/ko">Our Our market page</a>
-        <img src="../asset/itam-games.jpg" width="150px">
+        <br/>
+        <br/>
+        <img src="../asset/itam-games.jpg" />
         </a>
         <br/>
         ***********************************************************************
