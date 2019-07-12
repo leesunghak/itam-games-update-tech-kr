@@ -268,98 +268,15 @@ export default new Vuex.Store({
 })
 ```
 
-## 2. Technology
+<br />
+<br />
 
+### 극단적 수정사항
 
-## 5. Setup
+<br />
+<br />
 
-### Frontend
-
-1. Clone our repositry from GitHub
-
-```
-$ git clone https://github.com/sojournalists/sojournal.git
-```
-
-2. Install and set up [Android Studio](https://developer.android.com/studio)
-
-3. Install dependencies
-
-```
-$ yarn install
-```
-
-4. Run Android emulator from Android Studio
-
-5. Start Application
-
-```
-$ yarn android
-```
-
-### Backend
-
-1. Clone our repositry from GitHub
-
-```
-$ git clone https://github.com/sojournalists/sojournal.git
-```
-
-2. Install dependencies
-
-```
-$ yarn install
-```
-
-3. Setup the Database
-
-```
-#Create database
-$ createdb triplog
-
-#Drop database
-$ dropdb triplog
-
-#Migration
-$ yarn knex --knexfile=./db/knexfile.js migrate:latest
-
-#Rollback
-$ yarn knex --knexfile=./db/knexfile.js migrate:rollback
-
-#Seed data
-yarn knex --knexfile=./db/knexfile.js seed:run
-```
-
-3. Run Server
-
-```
-$ yarn node db/server.js
-```
-
-4. Run Server (Development)
-
-```
-$ yarn nodemon db/server.js
-```
-
-5. Now you can test server at localhost:4000/graphql
-
-### Hardware
-
-See Hardware [README](./raspberry-pi/README.md)
-
-## 6. Contributions
-
-To contribute to this app, make sure you create a branch and **ALWAYS** make a pull request. **DO NOT EDIT THE MASTER!**
-
-`git checkout -b <branch_name>`
-
-If you want to push your edited files to your remote file, run the following:
-
-`git push <remote_name> <branch_name>`
-
----
-
+1
 <div align="center">
 <b>LICENSE</b>: CC7 TEAM CYAN
 </div>
