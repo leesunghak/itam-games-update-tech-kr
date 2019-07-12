@@ -273,6 +273,8 @@ export default new Vuex.Store({
 
 ### 극단적 수정사항
 
+이 항목은 Vue와 Vue library에 조금의 수정된 사항들을 통해 극단적인 효과를 볼 수 있는 수정사항들에 대한 정보입니다.
+
 <br />
 <br />
 
