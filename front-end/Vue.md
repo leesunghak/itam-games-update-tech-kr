@@ -418,9 +418,8 @@ computed: {
 
 위의 예시와 같이 computed에 listeners() 를 통해 부모 자식 컴포넌트 간의 모든 $listener 값을 관리하고 BaseInput의 root element에 v-on을 객체 신텍스로 설정함으로 $listener의 모든 이벤트를 주시할 수 있습니다. 
 
-<br />
-<br />
-listeners에 대한 공식문서는 **[여기서](https://vuejs.org/v2/guide/components-custom-events.html)** 확인할 수 있습니다.
+
+**listeners에 대한 공식문서는 [여기서](https://vuejs.org/v2/guide/components-custom-events.html) 확인할 수 있습니다.**
 <br />
 <br />
 
