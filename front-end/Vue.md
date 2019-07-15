@@ -320,6 +320,9 @@ methods: {
 
 하지만 초기화 한번을 통해 Vue의 엣지 케이스를 커버할 수 있다면 좀 더 이상적일 것입니다. 아래의 예시는 router-view의 :key 값을 통해 이 문제에 솔루션을 제공합니다.
 
+
+**#key에 대한 공식문서는 [여기서](https://kr.vuejs.org/v2/api/index.html) 확인할 수 있습니다.**
+
 ```
 data() {
     return {
@@ -344,6 +347,8 @@ methods: {
 위의 코드는 만약 fullPath가 바뀐다면 컴포넌트가 같더라도 초기 상태로 렌더하라는 패턴입니다. 이 패턴을 적용할 경우 라우트 간의 로딩 속도가 좀 더 걸리게 되는 것은 사실이지만 디버깅과 좀 더 예측 가능한 라우팅의 측면에서 고려해 볼 만한 사항입니다.
 
 
+
+**route.fullPath에 대한 공식문서는 [여기서](https://router.vuejs.org/api/#route-object-properties) 확인할 수 있습니다.**
 <br />
 <br />
 
