@@ -420,7 +420,7 @@ computed: {
 
 <br />
 <br />
-**listeners에 대한 공식문서는 [여기서](https://vuejs.org/v2/guide/components-custom-events.html) 확인할 수 있습니다.**
+listeners에 대한 공식문서는 **[여기서](https://vuejs.org/v2/guide/components-custom-events.html)** 확인할 수 있습니다.
 <br />
 <br />
 
