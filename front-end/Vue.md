@@ -278,7 +278,7 @@ export default new Vuex.Store({
 <br />
 <br />
 
-1.더 꺠끗해진 Views
+1.더 깨끗해진 Views
 
 ***이 수정 사항은 Vue router 라이브러리에 관련된 수정사항입니다.***
 
